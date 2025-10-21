@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@app/*": [
+        "app/*"
+      ],
+      "@components/*": [
+        "components/*"
+      ],
+      "@features/*": [
+        "features/*"
+      ],
+      "@layouts/*": [
+        "layouts/*"
+      ],
+      "@routes/*": [
+        "routes/*"
+      ],
+      "@api/*": [
+        "api/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ],
+      "@styles/*": [
+        "styles/*"
+      ],
+      "@types/*": [
+        "types/*"
+      ]
+    },
+    "strict": true,
+    "moduleResolution": "Node",
+    "jsx": "react-jsx"
+  },
+  "include": [
+    "src"
+  ]
+}
