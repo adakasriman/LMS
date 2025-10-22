@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { TextField, Button, Card, Typography } from '@mui/material';
-import { useLoginMutation } from '../../api/endpoints/userApi';
-import { useAppDispatch } from '../../app/hooks';
-import { setCredentials } from './authSlice';
+import { useLoginMutation } from '@api/endpoints/userApi';
+import { useAppDispatch } from '@app/hooks';
+import { setCredentials } from '@features/auth/authSlice';
 
 const LoginPage: React.FC = () => {
     const [email, setEmail] = useState('');

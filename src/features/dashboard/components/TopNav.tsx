@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconButton, Typography } from '@mui/material';
-import { Brightness4, Brightness7 } from '@mui/icons-material';
+// import { Brightness4, Brightness7 } from '@mui/icons-material';
 
 const TopNav: React.FC = () => {
     const [dark, setDark] = React.useState(false);
@@ -15,7 +15,7 @@ const TopNav: React.FC = () => {
             <Typography variant="h6">Dashboard</Typography>
             <div className="flex items-center gap-4">
                 <IconButton onClick={toggleTheme}>
-                    {dark ? <Brightness7 /> : <Brightness4 />}
+                    {/* {dark ? <Brightness7 /> : <Brightness4 />} */}
                 </IconButton>
                 <span className="font-medium">John Doe</span>
             </div>

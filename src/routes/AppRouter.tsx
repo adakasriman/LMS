@@ -1,28 +1,35 @@
+// src/routes/AppRouter.tsx
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import WithAuthLayout from '../layouts/WithAuthLayout';
-import WithoutAuthLayout from '../layouts/WithoutAuthLayout';
-import Overview from '../features/dashboard/pages/Overview';
-import LoginPage from '../features/auth/LoginPage';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import WithAuthLayout from '@layouts/WithAuthLayout';
+import WithoutAuthLayout from '@layouts/WithoutAuthLayout';
+import LoginPage from '@features/auth/LoginPage';
+import DashboardPage from '@features/dashboard/pages/Overview';
+import NotFoundPage from '@pages/NotFoundPage';
 import ProtectedRoute from './ProtectedRoute';
 
-const AppRouter = () => (
-    <Router>
+const AppRouter: React.FC = () => {
+    return (
         <Routes>
+            {/* Auth routes */}
             <Route element={<WithoutAuthLayout />}>
                 <Route path="/login" element={<LoginPage />} />
             </Route>
-            <Route
-                element={
-                    <ProtectedRoute>
-                        <WithAuthLayout />
-                    </ProtectedRoute>
-                }
-            >
-                <Route path="/" element={<Overview />} />
+
+            {/* Protected routes */}
+            <Route element={<ProtectedRoute />}>
+                <Route element={<WithAuthLayout />}>
+                    <Route path="/dashboard" element={<DashboardPage />} />
+                </Route>
             </Route>
+
+            {/* Redirect root */}
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+
+            {/* 404 */}
+            <Route path="*" element={<NotFoundPage />} />
         </Routes>
-    </Router>
-);
+    );
+};
 
 export default AppRouter;

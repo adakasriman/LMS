@@ -1,6 +1,6 @@
 import React from 'react';
-import SideNav from './components/SideNav';
-import TopNav from './components/TopNav';
+import SideNav from '@components/SideNav';
+import TopNav from '@components/TopNav';
 
 const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     return (
