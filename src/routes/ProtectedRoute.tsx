@@ -1,14 +1,16 @@
 // src/routes/ProtectedRoute.tsx
-import React from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
-import { useAppSelector } from '@app/hooks';
+import React from "react";
+import { Navigate, Outlet } from "react-router-dom";
+import Cookies from "js-cookie";
+import { useAppSelector } from "@app/hooks";
 
 const ProtectedRoute: React.FC = () => {
-    const isLoggedIn = useAppSelector((state: any) => state.auth.isLoggedIn);
+  const isLoggedIn = useAppSelector((state: any) => state.auth?.isLoggedIn);
+  const token = Cookies.get("auth_token");
 
-    // If logged in, render nested routes via <Outlet />
-    // Otherwise redirect to login
-    return isLoggedIn ? <Outlet /> : <Navigate to="/login" replace />;
+  const hasAccess = isLoggedIn || Boolean(token);
+
+  return hasAccess ? <Outlet /> : <Navigate to="/login" replace />;
 };
 
 export default ProtectedRoute;
