@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-// import { Dashboard, TableChart, BarChart, Settings } from '@mui/icons-material';
+import { Dashboard, TableChart, BarChart, Settings } from '@mui/icons-material';
 
 const links = [
-    { name: 'Overview', path: '/', icon: ''},
-    { name: 'Transactions', path: '/transactions', icon: '' },
-    { name: 'Reports', path: '/reports', icon: '' },
-    { name: 'Settings', path: '/settings', icon: '' },
+    { name: 'Overview', path: '/', icon: <Dashboard /> },
+    { name: 'Transactions', path: '/transactions', icon: <TableChart /> },
+    { name: 'Reports', path: '/reports', icon: <BarChart /> },
+    { name: 'Settings', path: '/settings', icon: <Settings /> },
 ];
 
 const SideNav: React.FC = () => {
@@ -22,7 +22,7 @@ const SideNav: React.FC = () => {
                             className={`flex items-center gap-3 p-2 rounded hover:bg-gray-100 ${location.pathname === link.path ? 'bg-gray-200 font-bold' : ''
                                 }`}
                         >
-                            {/* {link.icon} */}
+                            {link.icon}
                             {link.name}
                         </Link>
                     </li>

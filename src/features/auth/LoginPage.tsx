@@ -3,21 +3,26 @@ import { TextField, Button, Card, Typography } from '@mui/material';
 import { useLoginMutation } from '@api/endpoints/userApi';
 import { useAppDispatch } from '@app/hooks';
 import { setCredentials } from '@features/auth/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [login, { isLoading }] = useLoginMutation();
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        try {
-            const result = await login({ email, password }).unwrap();
-            dispatch(setCredentials({ token: result.token, user: null })); // user can be fetched after login
-        } catch (err) {
-            console.error('Login failed', err);
-        }
+        // try {
+        //     const result = await login({ email, password }).unwrap();
+        //     dispatch(setCredentials({ token: result.token, user: null })); // user can be fetched after login
+        // } catch (err) {
+        //     console.error('Login failed', err);
+        // }
+        // set dummy token
+        dispatch(setCredentials({ token: 'dummy-token', user: { id: '1', name: 'John Doe', email: 'john.doe@example.com' } }));
+        navigate('/dashboard');
     };
 
     return (
